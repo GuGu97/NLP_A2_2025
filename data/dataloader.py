@@ -1,3 +1,4 @@
+import os
 import time
 import requests
 import pandas as pd
@@ -5,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 class DataLoader:
-    API_KEY = "rl_qF9bfD1LqYC7Xs12P4wCJoypz"
+    API_KEY = os.getenv("stack_app_key")
     BASE_URL = "https://api.stackexchange.com/2.3"
     OUTPUT_CSV = "so_qa_dataset.csv"
     SITE = "stackoverflow"
