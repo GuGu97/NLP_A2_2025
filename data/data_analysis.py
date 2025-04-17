@@ -31,6 +31,7 @@ def sort_by_idf_for_title(data):
     return sorted_terms
 
 
+# Remove target words from the given text
 def custom_stop_word_removal(text, words):
     tokens = word_tokenize(text)
     text = [word for word in tokens if word.lower() not in words]
@@ -38,6 +39,7 @@ def custom_stop_word_removal(text, words):
     return text
 
 
+# Remove target words in titles
 def word_removal_for_title(data, words):
     data["cleaned_title"] = data["cleaned_title"].apply(
         lambda x: custom_stop_word_removal(x, words)
