@@ -131,9 +131,17 @@ def data_preprocess():
         lambda x: text_clean(x, nlp)
     )
 
-    # Save the cleaned data
-    data_df.to_csv(OUTPUT_FILE)
+    # Save cleaned data with UTF-8 encoding and no index name
+    data_df.to_csv(
+        OUTPUT_FILE, index=True, encoding="utf-8", na_rep="", index_label=None
+    )
 
+    return data_df
+
+
+def get_data():
+    # Load exactly the same as it was saved
+    data_df = pd.read_csv(OUTPUT_FILE, index_col=0, encoding="utf-8")
     return data_df
 
 
