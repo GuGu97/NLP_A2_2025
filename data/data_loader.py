@@ -141,7 +141,7 @@ def data_preprocess():
 
 def get_data():
     # Load exactly the same as it was saved
-    data_df = pd.read_csv(OUTPUT_FILE, index_col=0, encoding="utf-8")
+    data_df = pd.read_csv(OUTPUT_FILE, encoding="utf-8")
     return data_df
 
 

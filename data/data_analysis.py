@@ -6,7 +6,20 @@ from nltk.tokenize import word_tokenize
 
 # Generate wordcloud for the title in posts
 def word_cloud_for_title(data):
-    text = " ".join(word for word in data["cleaned_title"])
+    # Drop NaN and ensure all elements are strings
+    text = " ".join(
+        str(word) for word in data["cleaned_title"] if isinstance(word, str)
+    )
+    wordc = WordCloud(width=800, height=600, background_color="white").generate(text)
+    plt.figure()
+    plt.imshow(wordc, interpolation="bilinear")
+    plt.axis("off")
+    plt.show()
+
+
+# Generate wordcloud for the text in posts
+def word_cloud_for_text(data):
+    text = " ".join(word for word in data["cleaned_text"])
     wordc = WordCloud(width=800, height=600, background_color="white").generate(text)
     plt.figure()
     plt.imshow(wordc, interpolation="bilinear")
